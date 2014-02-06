@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WPF_Training.EditListViewItem"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Edit The ListView Item" Height="150" Width="300">
+        Title="Edit Person" Height="200" Width="300">
     <Grid>
         <Grid.Background>
             <RadialGradientBrush>
@@ -13,9 +13,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"  >
-            <Label>Item</Label>
-            <TextBox Width="250" Height="30"  Text="{Binding Editedtxt}"></TextBox>
+        <StackPanel Grid.Row="0" Orientation="Vertical"  VerticalAlignment="Top" DataContext="{Binding EditedPerson}" >
+            <StackPanel  Orientation="Horizontal"  Margin="10"  HorizontalAlignment="Right">
+                <Label>Name</Label>
+                <TextBox Width="200" Height="30"  Text="{Binding Name}" ></TextBox>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal"  Margin="10"  HorizontalAlignment="Right">
+                <Label>Surname</Label>
+                <TextBox Width="200" Height="30"  Text="{Binding Surname}" ></TextBox>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
             <StackPanel.Resources>

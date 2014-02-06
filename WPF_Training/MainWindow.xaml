@@ -13,7 +13,14 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ListView Name="MyListView" Grid.Row="0" ItemsSource="{Binding Path=ItemsCollection}" SelectedItem="{Binding Selectedtxt}"></ListView>
+        <ListView Grid.Row="0" ItemsSource="{Binding Path=Persons}" SelectedItem="{Binding SelectedPerson}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="Auto" Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Button}">
@@ -21,9 +28,9 @@
                     <Setter Property="Width" Value="70"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Name="Add" Command="{Binding GetListItemsCommand}" >Add</Button>
-            <Button Name="Remove" Command="{Binding RemoveSelected}">Remove</Button>
-            <Button Name="Edit" Command="{Binding EditSelected}">Edit</Button>
+            <Button Command="{Binding AddToListComanCommand}" >Add</Button>
+            <Button Command="{Binding RemoveSelectedCommand}">Remove</Button>
+            <Button Command="{Binding EditSelectedCommand}">Edit</Button>
         </StackPanel>
     </Grid>
 
