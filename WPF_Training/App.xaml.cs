@@ -8,7 +8,7 @@ namespace WPF_Training
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var vm = new MyViewModel();
+            var vm = new MainViewModel();
             var view = new MainWindow {DataContext = vm};
             view.ShowDialog();
         }

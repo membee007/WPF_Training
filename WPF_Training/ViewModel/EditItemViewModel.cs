@@ -6,21 +6,34 @@ namespace WPF_Training.ViewModel
 {
     class EditItemViewModel:ViewModelBase
     {
-        public string Editedtxt { get; set; }
+        public Person EditedPerson { get; set; }
         public RelayCommand CancelCommand{get;private set;}
         public RelayCommand SaveCommand{get;private set;}
-        private string Originaltxt { get; set;}
-        public EditItemViewModel(string textTobeEdited)
+        private readonly Person _originalPerson =new Person();
+        public EditItemViewModel(Person person)
         {
-            Editedtxt = textTobeEdited;
-            Originaltxt = textTobeEdited;
+            InitCommands();
+            EditedPerson=new Person();
+            if(person==null)return;
+            EditedPerson = person;
+            SetOriginalPerson(person);
+        }
+            
+        private void InitCommands()
+        {
             CancelCommand = new RelayCommand(Cancel);
             SaveCommand = new RelayCommand(CloseWindow);
         }
-        
+
+        private void SetOriginalPerson(Person person)
+        {
+            _originalPerson.Name = person.Name;
+            _originalPerson.Surname = person.Surname;
+        }
+
         private void Cancel()
         {
-            Editedtxt = Originaltxt;
+            EditedPerson = _originalPerson;
             CloseWindow();
         }
 
